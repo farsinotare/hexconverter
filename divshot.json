@@ -1,0 +1,7 @@
+{
+  "name": "hex",
+  "root": "./static",
+  "clean_urls": true,
+  "cache_control": {},
+  "routes": {}
+}

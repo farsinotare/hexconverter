@@ -1,0 +1,33 @@
+html {
+  margin: 3em 20%;
+  color: #111;
+  font-family: "Helvetica", Arial, sans-serif;
+}
+
+/* Form */
+input {
+  border: 0;
+  border-bottom: 3px solid #c8c8c8;
+  padding-bottom: .5em;
+  font-family: "Helvetica", Arial, sans-serif;
+  font-size: 1.5em;
+  width: 70%;
+}
+
+input:hover {
+  border-bottom: 3px solid #a6a6a6;
+}
+
+input:focus {
+  outline: 0;
+  border: 0;
+  border-bottom: 3px solid #0074D9;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}

@@ -19,15 +19,6 @@ var Data = Backbone.Model.extend({
     this.set('hex', hex);
   },
 
-  hex2ascii: function(hex) {
-    if (hex !== "") {
-      var val = convert(hex.slice(2), {out: 'utf-8'});
-      this.set('ascii', val);
-    } else {
-      this.set('ascii', '');
-    }
-  },
-
   hex2bytes: function(hex) {
     if (hex !== "") {
       var val = parseInt(hex, 16);
@@ -69,11 +60,7 @@ var Data = Backbone.Model.extend({
   },
 
   initialize: function() {
-    this.on('convert:bytes2hex', function(v) { this.bytes2hex(v) });
-    this.on('convert:bytes2binary', function(v) { this.bytes2binary(v) });
     this.on('convert:binary2hex', function(v) { this.binary2hex(v) }); 
-    this.on('convert:binary2bytes', function(v) { this.binary2bytes(v) });
-    this.on('convert:hex2bytes', function(v) { this.hex2ascii(v) });
     this.on('convert:hex2binary', function(v) { this.hex2binary(v) });
   }
 

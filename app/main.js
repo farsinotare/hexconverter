@@ -2,21 +2,24 @@ var $ = require('jquery-untouched');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-var Data = require('models/data');
-var HexView = require('views/hex');
-var BinaryView = require('views/binary');
-var BytesView = require('views/bytes');
+var Data = require('models/hex2bin');
+var Hex2Bin = require('views/hex2bin');
+var Bin2Hex = require('views/binary');
 
-var data = new Data();
+var InfoView = require('views/infoView');
+// var BytesView = require('views/bytes');
+
+var h2bData = new Data();
 
 $(document).ready(function() {
 
-  var hexView = new HexView({el: $('#hex'), model: data});
-  var binaryView = new BinaryView({el: $('#binary'), model: data});
-  var bytesView = new BytesView({el: $('#bytes'), model: data});
+  var hex2binView = new Hex2Bin({el: $('#hex2bin-hex'), model: h2bData});
+  var bin2hexView = new Bin2Hex({el: $('#hex2bin-bin'), model: h2bData});
+  var info = new InfoView({el: $('#info'), model: h2bData});
 
-  h2bView.render();
-  d2h.render();
+  hex2binView.render();
+  bin2hexView.render();
+  info.render();
 
 });
 

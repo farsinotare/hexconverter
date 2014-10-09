@@ -22,7 +22,13 @@ var Binary = Backbone.View.extend({
       },
       getVal: function($el, event, options) {
         var val = $el.val().replace(/\s+/g, '');
-        this.model.trigger('convert:binary2bytes', val);
+        var reformat = '';
+        if (val !== '') {
+          for (var i = 0; i < val.length; i += 4) {
+            reformat += val.substr(i, 4) + ' ';
+          }
+        }
+        $el.val(reformat);
         this.model.trigger('convert:binary2hex', val);
         return $el.val();
       }
@@ -33,6 +39,10 @@ var Binary = Backbone.View.extend({
     this.$el.html(this.template());
     this.stickit();
     return this;
+  },
+
+  initialize: function() {
+    this.listenTo(this.model, 'all', function(e) { console.log(e) });
   }
 
 });

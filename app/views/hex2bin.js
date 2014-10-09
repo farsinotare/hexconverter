@@ -26,14 +26,8 @@ var Hex = Backbone.View.extend({
       },
       getVal: function($el, event, options) {
         var val = $el.val().replace(/\s+/g, '');
+        this.model.trigger('convert:hex2bytes', $el.val());
         this.model.trigger('convert:hex2binary', $el.val());
-        var reformat = '';
-        if (val !== '') {
-          for (var i = 0; i < val.length; i += 2) {
-            reformat += val.substr(i, 2) + ' ';
-          }
-        }
-        $el.val(reformat);
         return $el.val();
       }
     }
@@ -47,6 +41,7 @@ var Hex = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'converted:hex', this.render);
+
   }
 
 });
